@@ -13,19 +13,11 @@ app.get('/',(req,res)=>{
 })
 
 io.on('connection',(socket)=>{
-    socket.on('message',(msg)=>{
+    socket.on("good",(msg)=>{
         console.log(msg)
-        socket.emit("event",functo() )
-        
     })
 })
-const functo=()=>{
-    let sum=0
-    for(let i=0;i<6;i++){
-        sum+=i;
-    }
-    return sum;
-}
+
 
 server.listen(PORT,()=>{
     console.log(`server listening on port ${PORT}`);

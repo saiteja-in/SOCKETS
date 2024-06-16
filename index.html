@@ -11,13 +11,7 @@
     </script>
     <script>
         const socket=io()
-        socket.on('connect',()=>{
-            socket.emit('message','heyn server')
-            socket.on("event",(msg)=>{
-                console.log(msg)
-                
-            })
-        })
+        socket.emit("good","good morning")
     </script>
 </body>
 </html>
