@@ -11,7 +11,14 @@
     </script>
     <script>
         const socket=io()
-        socket.emit("good","good morning")
+        const name=prompt('what is your name');
+        const age=prompt('what is your age')
+        const job=prompt('what is your job')
+        const userInfo={name,age,job}
+        socket.on('connect',()=>{
+            console.log(socket.id)
+            socket.emit('send user info',userInfo)
+        })
     </script>
 </body>
 </html>
