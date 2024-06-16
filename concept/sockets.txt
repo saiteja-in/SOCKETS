@@ -1,0 +1,14 @@
+low latency, bi directional, event less communication between the client and the server
+socket io, http, polling
+
+main reason to use socket io instead of http 
+1 real time communication
+2 low latency between the client and the server
+3 bi directional communication , the data can send and receive both from client and the server
+4 scalabilty
+5 improved performance
+
+web sockets vs scoket io
+socket io is a built in library and it is built in top of webscokets and it is easy to use and old browsers can use socket io but not web sockets
+
+sockets io -- automatic connection ,not with web sockets
