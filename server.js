@@ -15,7 +15,7 @@ app.get('/',(req,res)=>{
 
 io.on('connection',(socket)=>{
         socket.on('send mood',(name,mood)=>{
-            io.emit('rec mood',name,mood)
+            socket.emit('rec mood',name,mood)
         })
 })
 
