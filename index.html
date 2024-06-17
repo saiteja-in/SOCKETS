@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>socket io</title>
+    <title>Mood Tracker</title>
 </head>
 <body>
     <script src="/socket.io/socket.io.js">
@@ -11,8 +11,13 @@
     </script>
     <script>
         const socket=io()
-        socket.emit('greeting',"my name is ","saiteja",(ack)=>{
-            console.log(ack)
+        const name=prompt('What is your name?')
+        const mood=prompt('What is your mood')
+        socket.on('connect',()=>{
+            socket.emit('send mood',name,mood)
+            socket.on('rec mood',(name,mood)=>{
+                document.write(`${name} mood is ${mood}`)
+            })
         })
     </script>
 </body>

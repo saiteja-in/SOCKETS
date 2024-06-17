@@ -14,12 +14,9 @@ app.get('/',(req,res)=>{
 })
 
 io.on('connection',(socket)=>{
-    console.log(`a user is connected with id ${socket.id}`)
-    socket.on('greeting',(a,b,ack)=>{
-        console.log(a)
-        console.log(b);
-        ack("message recieved succesfully in the server")
-    })
+        socket.on('send mood',(name,mood)=>{
+            io.emit('rec mood',name,mood)
+        })
 })
 
 
