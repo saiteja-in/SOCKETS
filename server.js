@@ -8,7 +8,6 @@ const path=require('path');
 //we are wrapping http server inside socket io server
 const PORT=3000;
 
-let users=[]
 
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'index.html'));
@@ -16,11 +15,11 @@ app.get('/',(req,res)=>{
 
 io.on('connection',(socket)=>{
     console.log(`a user is connected with id ${socket.id}`)
-    socket.on("send user info",userInfo=>{
-        users.push(userInfo)
-        console.log(userInfo)
+    socket.on('greeting',(a,b,ack)=>{
+        console.log(a)
+        console.log(b);
+        ack("message recieved succesfully in the server")
     })
-    console.log(users)
 })
 
 
