@@ -1,0 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker</title>
+</head>
+<body>
+    <script src="/socket.io/socket.io.js">
+    </script>
+    <script>
+        const socket=io()
+        const name=prompt('What is your name?')
+        const mood=prompt('What is your mood')
+        socket.on('connect',()=>{
+            socket.emit('send mood',name,mood)
+            socket.on('rec mood',(name,mood)=>{
+                document.write(`${name} mood is ${mood}`)
+            })
+        })
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Chat</title>
+</head>
+<body>
+    <input type="text" id="messages" placeholder="Type your message here">
+    <button id="sendbtn">Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        const sendbtn = document.getElementById("sendbtn");
+        const messages = document.getElementById("messages");
+
+        socket.on("message",msg=>console.log(msg));
+        socket.on("teja",msg=>console.log(msg));
+        
+
+        sendbtn.addEventListener("click", (e) => {
+            const msg = messages.value;
+            console.log(msg);
+            // Emit the message to the server
+            socket.emit('chat message', msg);
+            messages.value = ''; // Clear the input field after sending
+        });
+
+       
+    </script>
+</body>
+</html>

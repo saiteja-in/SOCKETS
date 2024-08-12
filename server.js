@@ -6,17 +6,23 @@ const {Server}=require('socket.io')
 const io=new Server(server)
 const path=require('path');
 //we are wrapping http server inside socket io server
-const PORT=3000;
+const PORT=3002;
 
-
+app.use(express.static(path.resolve("./public")))
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'index.html'));
+    res.sendFile("/index.html");
 })
 
 io.on('connection',(socket)=>{
-        socket.on('send mood',(name,mood)=>{
-            socket.emit('rec mood',name,mood)
-        })
+    console.log('a user connected',socket.id);
+       
+    
+        socket.on('chat message', (msg) => {
+            console.log('Message received: ' + msg);
+            // Here you can add the message to your chat UI
+            io.emit("message",msg)
+            io.emit("teja","hello world")
+        });
 })
 
 
